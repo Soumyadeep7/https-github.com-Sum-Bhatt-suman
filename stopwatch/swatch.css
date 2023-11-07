@@ -1,0 +1,43 @@
+body{
+    background-color:#eeece2;
+     
+}
+
+.stop{
+    display: flex;
+}
+
+
+.container{
+   background-color: #e0ddca;
+   width: 100%;
+   padding: 43px;
+   text-align: center;
+   border: 5px solid #cecab0;
+   align-self: center;
+   
+    margin-top: 4%;
+}
+.container .txt{
+    font-size: 80px;
+    color: rgb(255, 255, 255);  
+    display: flex;
+    margin-left: 12%;
+
+    
+
+}
+ 
+.container button{
+    width: 120px;
+    height: 38px;
+    border: none;
+    background-color: #b9b48f;
+    color: white;
+    margin-inline: 11px;
+    border-radius: 4px;
+    font-size: 22px;
+    margin-top: 22px;
+    outline: none;
+
+}

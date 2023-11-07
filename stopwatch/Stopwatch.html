@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="swatch.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div class="container w-full h-96 ml-48 rounded-xl my-56 py-24">
+      <div class="txt flex justify-center mr-44">
+        <div id="hr">00</div>
+        <div>:</div>
+        <div id="min">00</div>
+        <div>:</div>
+        <div id="sec">00</div>
+        <div>:</div>
+        <div id="milli">00</div>
+      </div>
+
+      
+
+      <button id="start" onclick="start()"><span class="font-semibold text-black">Start</span></button>
+      <button id="stop" onclick="stop()"><span class="font-semibold text-black">Stop</span></button>
+      <button id="reset" onclick="reset()"><span class="font-semibold text-black">Reset</span></button>
+
+    
+    </div>
+
+    <script src="sw.js"></script>
+  </body>
+  <script>
+    let hr = 0;
+    let min = 0;
+    let sec = 0;
+    let milli = 0;
+
+    let timer = false;
+
+    function start() {
+      timer = true;
+      stopwatch();
+    }
+
+    function stop() {
+      timer = false;
+    }
+
+    function reset() {
+      location.reload();
+    }
+
+    function stopwatch() {
+      if (timer == true) {
+        milli = milli + 1;
+        if (milli == 100) {
+          sec = sec + 1;
+          milli = 0;
+        }
+        if (sec == 60) {
+          min = min + 1;
+          sec = 0;
+        }
+        if (min == 60) {
+          hr = hr + 1;
+          min = 0;
+        }
+        var getHr = hr;
+        var getMin = min;
+        var getS = sec;
+
+        if (hr < 10) {
+          getHr = "0" + hr;
+        }
+        if (min < 10) {
+          getMin = "0" + min;
+        }
+        if (sec < 10) {
+          getS = "0" + sec;
+        }
+        document.getElementById("sec").innerHTML = getS;
+        document.getElementById("min").innerHTML = getMin;
+        document.getElementById("hr").innerHTML = getHr;
+        document.getElementById("milli").innerHTML = milli;
+        let timeOut = setTimeout("stopwatch()", 8);
+      }
+    }
+  </script>
+</html>
