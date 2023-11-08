@@ -37,16 +37,13 @@
     </div>
 
 
-
-
-    <script>
+  
+  <script>
         function convertCurrency() {
             const amount = parseFloat(document.getElementById("amount").value);
             const fromCurrency = document.getElementById("fromCurrency").value;
             const toCurrency = document.getElementById("toCurrency").value;
 
-            // You would typically fetch exchange rates from an API here.
-            // For simplicity, we'll use fixed rates.
             const exchangeRate = {
                 USD: {
                     INR: 83.41,
