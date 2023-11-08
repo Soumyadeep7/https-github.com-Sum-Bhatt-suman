@@ -5,7 +5,7 @@ body {
 }
 
 .converter {
-    background-color: #ffd299;
+    background-color: burlywood;
     color: #333; 
 
     max-width: 300px;
@@ -13,6 +13,7 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  
 }
 
 .input-group {

@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="cg.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    <div class="converter h-80 w-80">
-        <h2 class="font-semibold">Currency Converter</h2>
-        <div class="input-group">
-            <input type="number" id="amount" placeholder="Amount">
-            <select id="fromCurrency">
-                
+    <div class="converter h-96 w-96 my-16">
+        <h2 class="font-semibold text-2xl">Currency Converter</h2>
+        <div class="input-group py-6">
+            <input type="number" id="amount" placeholder="Amount" class="h-10">
+            <select id="fromCurrency" class="h-10">
+
                 <option value="USD">USD</option>
                 <option value="INR">INR</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
             </select>
         </div>
-        
-           
-            <input type="text" id="result" placeholder="Result" disabled>
-            <select id="toCurrency">
+
+        <div class="py-8 w-fit">
+            <input type="text" id="result" class="h-10" placeholder="Result" disabled>
+            <select id="toCurrency" class="h-10">
                 <option value="USD">USD</option>
                 <option value="INR">INR</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
-                
-        </select>
-        
+
+            </select>
         </div>
-        <button onclick="convertCurrency()" class="h-10 w-40 bg-blue-400 active:bg-white transition duration-75 text-blue-800 font-semibold">Convert</button>
     </div>
-    <script src="script.js"></script>
+    </div>
+    <div class=""><button onclick="convertCurrency()"
+        class="h-10 w-40 bg-blue-400 active:bg-white transition duration-75 text-blue-800 font-semibold">Convert</button>
+    </div>
+
+
+
+
+    <script>
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+
+            // You would typically fetch exchange rates from an API here.
+            // For simplicity, we'll use fixed rates.
+            const exchangeRate = {
+                USD: {
+                    INR: 83.41,
+                    EUR: 0.95,
+                    GBP: 0.82
+                },
+                INR: {
+                    USD: 0.012,
+                    EUR: 0.011,
+                    GBP: 0.099
+                },
+                EUR: {
+                    USD: 1.06,
+                    INR: 88.25,
+                    GBP: 0.87
+                },
+                GBP: {
+                    USD: 1.21,
+                    INR: 101.16,
+                    EUR: 1.15
+                }
+            };
+
+            const convertedAmount = amount * exchangeRate[fromCurrency][toCurrency];
+
+            document.getElementById("result").value = convertedAmount.toFixed(2);
+        }
+    </script>
 </body>
+
 </html>
